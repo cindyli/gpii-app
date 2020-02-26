@@ -216,7 +216,7 @@ gpii.app.gpiiConnector.handleRawChannelMessage = function (gpiiConnector, messag
  */
 gpii.app.gpiiConnector.updateActivePrefSet = function (gpiiConnector, newPrefSet) {
     gpiiConnector.send({
-        path: ["activeContextName"],
+        path: ["activePrefsSetName"],
         type: "ADD",
         value: newPrefSet
     });
@@ -278,7 +278,7 @@ gpii.app.extractPreferencesData = function (message, defaultPreferences) {
         contexts = preferences.contexts,
         gpiiKey = value.gpiiKey,
         sets = [],
-        activeSet = value.activeContextName || null,
+        activeSet = value.activePrefsSetName || null,
         settingGroups = [];
 
     if (contexts) {
@@ -831,7 +831,7 @@ gpii.app.dev.gpiiConnector.qss.distributeQssSettings = function (that, message) 
         // the type of update in the future
         that.previousState = {
             gpiiKey: value.gpiiKey,
-            activeSet: value.activeContextName
+            activeSet: value.activePrefsSetName
         };
     }
 };
